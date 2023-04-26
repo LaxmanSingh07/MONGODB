@@ -13,10 +13,8 @@ const tweetScema = new mongoose.Schema(
         },
         comments: [
             {
-                content: {
-                    type: String,
-                    required: true,
-                },
+             type:mongoose.Schema.Types.ObjectId,
+             ref:'Comment' //name of the model
             },
         ],
     },

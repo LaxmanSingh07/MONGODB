@@ -17,5 +17,5 @@ const commentScema = new mongoose.Schema(
 );
 
 
-const Comment = mongoose.model("Comment", tweetScema);
+const Comment = mongoose.model("Comment", commentScema);
 module.exports = Comment;

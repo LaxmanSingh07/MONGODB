@@ -6,6 +6,7 @@ const tweetRepo = require("./repository/tweet-repo");
 
 const Tweet = require("./models/tweet");
 const TweetRepo = require("./repository/tweet-repo");
+const Comment = require("./models/comments");
 app.listen(3000, async () => {
     console.log("Server is running on 3000");
     await connect();
@@ -41,9 +42,12 @@ app.listen(3000, async () => {
     //additional 
 
     const tweetR = new TweetRepo();
-    const tweet = await tweetR.create({ content: `my tweet` });
+    const tweet = await tweetR.create({ content: `tweet with comment schema` });
     console.log(tweet);
-    tweet.comments.push({ content: 'first comment' });
+    const comment = await Comment.create({
+        content: `comment for tweet ${tweet._id}`,
+    });
+    tweet.comments.push(comment);
     await tweet.save();
-    console.log(tweet)
+    console.log(tweet);
 });

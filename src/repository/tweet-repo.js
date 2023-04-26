@@ -35,7 +35,17 @@ class TweetRepo{
 
     }
 
-    async destrou(id){
+    async getWithComments(id){
+        try{
+            const tweet=await Tweet.findById(id).populate({path:'comments'});
+            return tweet;
+        }
+        catch(error){
+            console.log(error);
+        }
+    }
+
+    async destroy(id){
 
         try{
             const tweet=await Tweet.findByIdAndRemove(id);
