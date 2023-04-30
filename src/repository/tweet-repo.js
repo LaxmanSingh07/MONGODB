@@ -37,7 +37,7 @@ class TweetRepo{
 
     async getWithComments(id){
         try{
-            const tweet=await Tweet.findById(id).populate({path:'comments'});
+            const tweet=await Tweet.findById(id).populate({path:'comments'}).lean;
             return tweet;
         }
         catch(error){
@@ -54,6 +54,18 @@ class TweetRepo{
         catch(error){
             console.log(error);
         }   
+
+    }
+
+    async getAll(offset,limit)
+    {
+        try{
+            const tweet=await Tweet.find().limit(limit).skip(offset);
+            return tweet;
+        }
+        catch(error){
+            console.log(error);
+        }
 
     }
 }

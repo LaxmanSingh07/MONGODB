@@ -41,13 +41,32 @@ app.listen(3000, async () => {
 
     //additional 
 
+    // const tweetR = new TweetRepo();
+    // const tweet = await tweetR.create({ content: `tweet with comment schema` });
+    // console.log(tweet);
+    // const comment = await Comment.create({
+    //     content: `comment for tweet ${tweet._id}`,
+    // });
+    // tweet.comments.push(comment);
+    // await tweet.save();
+    // console.log(tweet);
+
+
+    //paginaion
+
+    // const tweetR = new TweetRepo();
+    // const tweet = await tweetR.getAll(1,4);
+    // console.log(tweet[0]._id);
+
+    //if we print only id here then also it will print the id of the collection 
+    //this is because of virtual property
+
+    // console.log(tweet[0].contentWithEmail)
+
+    // Middleware in the Mongoose
+
     const tweetR = new TweetRepo();
-    const tweet = await tweetR.create({ content: `tweet with comment schema` });
+    const tweet=await tweetR.create({content:"with hooks now"})
     console.log(tweet);
-    const comment = await Comment.create({
-        content: `comment for tweet ${tweet._id}`,
-    });
-    tweet.comments.push(comment);
-    await tweet.save();
-    console.log(tweet);
+
 });
