@@ -6,8 +6,7 @@ const hashtagSchema=new mongoose.Schema({
         required: true,
     },
 
- 
-
+    
     //multiple tweets can have same hashtag
     tweets:[
         {

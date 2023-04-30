@@ -65,8 +65,20 @@ app.listen(3000, async () => {
 
     // Middleware in the Mongoose
 
-    const tweetR = new TweetRepo();
-    const tweet=await tweetR.create({content:"with hooks now"})
-    console.log(tweet);
 
+
+
+    // const tweetR = new TweetRepo();
+    // const tweet=await tweetR.create({content:"with hooks now"})
+    // console.log(tweet);
+
+
+
+    //tweet 
+
+    const tweets=await Tweet.find({
+        content:
+        ["first tweet","my tweet"]
+    });
+    console.log(tweets);
 });
