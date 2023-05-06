@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 //this is how we define an schema
 
-const commentScema = new mongoose.Schema(
+const commentSchema = new mongoose.Schema(
     {
         content: {
             type: String,
@@ -17,5 +17,5 @@ const commentScema = new mongoose.Schema(
 );
 
 
-const Comment = mongoose.model("Comment", commentScema);
+const Comment = mongoose.model("Comment", commentSchema);
 module.exports = Comment;

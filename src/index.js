@@ -2,83 +2,35 @@ const express = require("express");
 const connect = require("./config/database");
 const app = express();
 
-const tweetRepo = require("./repository/tweet-repo");
+// const tweetRepo = require("./repository/tweet-repo");
 
-const Tweet = require("./models/tweet");
+// const Tweet = require("./models/tweet");
 const TweetRepo = require("./repository/tweet-repo");
-const Comment = require("./models/comments");
+// const Comment = require("./models/comments");
+
+const {HashtagRepo}=require('./repository/index');
+
+const TweetService = require("./services/tweet-service");
 app.listen(3000, async () => {
     console.log("Server is running on 3000");
-    await connect();
-    // console.log("Mongodb Connected");
+  await connect();
+console.log("db connect successfully");
 
-    // const tweet=await Tweet.create({
-    //     content:"third Tweet",
-    //     userEmail:"hm@gmail.com"
-    // })
-    // const tweets=await Tweet.find();//it will return all the tweets
-    // console.log(tweets);
-
-    // const tweet=await Tweet.findById("64489079afb53cdeb21ecc57");
-    // tweet.userEmail="Guruji@gmail.com";
-    // await tweet.save(); // it is used to
-    // console.log(typeof(tweet)); // it is an object
-
-    //CRUD Operation
-
-    //   const tweetR = new tweetRepo();
-
-    // const tweet=await tweetR.get("64489079afb53cdeb21ecc57");
-    // const tweet=await tweetR.get("64489079afb53cdeb21ecc57");
-    //   const tweet = await tweetR.update(
-    //     "64489079afb53cdeb21ecc57",
-    //     { content: "updated tweeter " }
-
-    //   );
-    //   console.log(tweet);
+// let repo=new HashtagRepo();
 
 
 
-    //additional 
-
-    // const tweetR = new TweetRepo();
-    // const tweet = await tweetR.create({ content: `tweet with comment schema` });
-    // console.log(tweet);
-    // const comment = await Comment.create({
-    //     content: `comment for tweet ${tweet._id}`,
-    // });
-    // tweet.comments.push(comment);
-    // await tweet.save();
-    // console.log(tweet);
+// let response=await repo.findByName(
+//     ['Happy','Fun']
+// )
+// response=response.map(tags=>tags.title);
+// console.log(response);
 
 
-    //paginaion
+let service=new TweetService();
+const tweet=await service.create({
+    content:"This is my #Python #Hapy #tweet . I am really #excited"
+})
+// console.log(tweet)
 
-    // const tweetR = new TweetRepo();
-    // const tweet = await tweetR.getAll(1,4);
-    // console.log(tweet[0]._id);
-
-    //if we print only id here then also it will print the id of the collection 
-    //this is because of virtual property
-
-    // console.log(tweet[0].contentWithEmail)
-
-    // Middleware in the Mongoose
-
-
-
-
-    // const tweetR = new TweetRepo();
-    // const tweet=await tweetR.create({content:"with hooks now"})
-    // console.log(tweet);
-
-
-
-    //tweet 
-
-    const tweets=await Tweet.find({
-        content:
-        ["first tweet","my tweet"]
-    });
-    console.log(tweets);
-});
+})

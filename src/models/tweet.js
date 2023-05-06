@@ -12,7 +12,6 @@ const tweetSchema = new mongoose.Schema(
         },
 
         hastags:[
-
             {
                 type:mongoose.Schema.Types.ObjectId,
                 ref:"Hashtag"
@@ -22,9 +21,6 @@ const tweetSchema = new mongoose.Schema(
     },
     { timestamps: true }
 );
-
-
-
 
 const Tweet = mongoose.model("Tweet", tweetSchema);
 module.exports = Tweet;
